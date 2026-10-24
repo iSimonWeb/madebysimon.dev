@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Badge from './Badge.astro';
 import Tag from './Tag.astro';
 import type { Project } from '../data/project';
@@ -11,27 +12,44 @@ interface Props {
 
 const { project, tone = 'dark' } = Astro.props;
 const dark = tone === 'dark';
+const icon = project.icon;
+const iconClass = ['size-12 shrink-0 rounded-[11px]', icon?.tile && 'bg-paper p-1'];
 ---
 
 <article
   class:list={['relative flex flex-col gap-4 rounded-card p-7', dark ? 'bg-card-dark' : 'bg-card']}
 >
   <div class="flex flex-wrap items-center justify-between gap-3">
-    <h3 class="text-[26px] leading-tight font-semibold">
-      {project.href ? (
-        <a
-          href={project.href}
-          class:list={[
-            'underline decoration-accent decoration-2 underline-offset-4 after:absolute after:inset-0 after:rounded-card hover:decoration-4',
-            dark ? 'text-paper' : 'text-ink-deep',
-          ]}
-        >
-          {project.name}
-        </a>
-      ) : (
-        project.name
-      )}
-    </h3>
+    <div class="flex min-w-0 items-center gap-3.5">
+      {icon &&
+        (icon.src.format === 'svg' ? (
+          <img src={icon.src.src} alt="" width="48" height="48" class:list={iconClass} />
+        ) : (
+          <Image
+            src={icon.src}
+            alt=""
+            width={48}
+            height={48}
+            densities={[2, 3]}
+            class:list={iconClass}
+          />
+        ))}
+      <h3 class="text-[26px] leading-tight font-semibold">
+        {project.href ? (
+          <a
+            href={project.href}
+            class:list={[
+              'underline decoration-accent decoration-2 underline-offset-4 after:absolute after:inset-0 after:rounded-card hover:decoration-4',
+              dark ? 'text-paper' : 'text-ink-deep',
+            ]}
+          >
+            {project.name}
+          </a>
+        ) : (
+          project.name
+        )}
+      </h3>
+    </div>
     {project.badge ? (
       <Badge size="sm">{project.badge}</Badge>
     ) : (

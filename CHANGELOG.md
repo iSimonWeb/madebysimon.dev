@@ -6,8 +6,19 @@ All notable changes to madebysimon.dev. The format follows
 
 ## [Unreleased]
 
+## [0.6.1] - 2026-10-24
+
 - `npm run dev` and `npm run preview` listen on the LAN too
   (`server.host`), so the site can be checked from a phone.
+- Each work project shows its own app icon, taken from its repo: the PWA
+  icon where there is one, otherwise the favicon. Ministry and department
+  logos stay off the site, since they belong to the institutions.
+- The icons are 48 px rounded tiles. The stamp brings its own paper square,
+  and the falcon, drawn on transparent, gets a paper tile to match. PNGs become 2x and 3x WebPs of 1 to 3 KB each. SVGs are served as
+  they are.
+- The library's favicon recolours itself for dark mode. Inside an `<img>`
+  that follows the visitor's OS theme, not the card, so the falcon would
+  have turned cream on our paper tile. Our copy drops that rule.
 
 ## [0.6.0] - 2026-10-24
 
