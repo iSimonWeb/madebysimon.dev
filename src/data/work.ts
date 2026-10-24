@@ -1,22 +1,19 @@
-export interface WorkItem {
-  name: string;
-  /** Short kind label, shown top right. */
-  kind: string;
-  /** Replaces the kind label with a lime badge, for work still in progress. */
-  badge?: string;
-  description: string;
-  tags: string[];
-  /** Detail page, if the project gets one. */
-  href?: string;
-}
+import type { Project } from './project';
 
-export const work: WorkItem[] = [
+export const work: Project[] = [
   {
     name: 'Helpdesk',
     kind: 'PWA',
     description:
       'The office’s ticketing system, installable like an app. Sign in with your work Microsoft account and updates arrive live, or as push notifications when it’s closed. A ticket can go on hold with a reason the requester can see, and time spent waiting on someone else is counted apart from time spent fixing.',
     tags: ['React', 'Fluent UI', 'Node.js', 'MongoDB', 'Entra ID', 'Web Push'],
+  },
+  {
+    name: 'Intranet Portal',
+    kind: 'Intranet',
+    description:
+      'The home page for everyone working in the building, laid out as a bento grid: news, alerts, safety teams and the canteen menu each get their own tile. The contact book reads its directory from the Helpdesk, colour-coded icons jump straight to the office services, and admins edit it all behind Microsoft sign-in.',
+    tags: ['React', 'Vite', 'Express', 'MongoDB', 'Entra ID'],
   },
   {
     name: 'Posta Maestro',
