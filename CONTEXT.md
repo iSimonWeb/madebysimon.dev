@@ -80,10 +80,9 @@ Reference: `reference/site-mockup.html` (exported from the design canvas — inl
 Rules for copy: don't mention user counts at work. "Ministry of Culture" by name is fine. No internal hostnames, IPs or screenshots of internal tools.
 
 ### Open items to confirm with Simon
-- dflibrary description (only the email side was known for sure).
-- Ultimate Desktop Cleaner app icon is a placeholder.
-- GitHub and Instagram URLs (GitHub username may change from `iSimonWeb`).
-- Whether work projects get their own detail pages later (design the card component so it can link out).
+- Whether the Library Manager card may name the Biblioteca Di Falco. For now it says "a Ministry library in Rome".
+- Instagram and X handles. Until they're settled the footer links GitHub only, and the GitHub username may still change from `iSimonWeb`. Both live in `src/data/site.ts`.
+- Whether work projects get their own detail pages later. `ProjectCard` already makes the whole card a link when a project has an `href`.
 
 ## Engineering requirements
 - Responsive down to 360px wide: nav wraps, grids collapse to one column, no horizontal scroll.
