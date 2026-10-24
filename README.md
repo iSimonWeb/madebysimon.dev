@@ -28,6 +28,8 @@ machine, install the browser once with
 
 - `src/data/`: the words. Apps, work projects, nav and social links are plain
   TypeScript lists, so adding an app or a project means adding an entry there.
+- `src/data/boot.ts`: the start-up terminal's lines and its spinner verbs.
+  Add a verb and it joins the random draw.
 - `src/components/`: the building blocks (`MarkFull`, `MarkSmall`, `AppCard`,
   `WorkCard`, `Button`...), with the page sections in `sections/`.
 - `src/styles/global.css`: the brand tokens in Tailwind's `@theme`. Tailwind's

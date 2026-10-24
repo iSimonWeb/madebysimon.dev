@@ -44,6 +44,19 @@ const ogImage = new URL('/og.png', Astro.site);
       content="The Made by Simon Si element tile, next to the madebysim0n wordmark and the line Small, solid software."
     />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Decides before first paint whether the start-up terminal plays (see BootTerminal). -->
+    <script is:inline>
+      try {
+        if (
+          !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+          !sessionStorage.getItem('booted')
+        ) {
+          sessionStorage.setItem('booted', '1');
+          document.documentElement.setAttribute('data-boot', '');
+        }
+      } catch {}
+    </script>
   </head>
   <body>
     <a

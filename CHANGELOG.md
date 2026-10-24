@@ -6,6 +6,24 @@ All notable changes to madebysimon.dev. The format follows
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-10-24
+
+- The site starts up in a terminal that builds Simon from source:
+  `make simon` finds no prebuilt binaries, a spinner cycles through maker
+  verbs (soldering, rubber-ducking, calibrating the bed...), and
+  `./simon --serve` brings the instance up. It is our nod to being
+  self-taught. Then it rolls up like a shop shutter, revealing a page that was
+  already rendered underneath, so nothing waits on it.
+- It plays once per browser session, never with reduced motion or without
+  JavaScript, is hidden from screen readers, and any key, click, scroll or tap
+  skips it (gone in about 0.3 s). A full run takes about 4.9 s. If the script
+  never runs, a CSS failsafe hides it after 10 s.
+- The script is small enough that Astro inlines it, so it adds no request.
+  The lines and the verb list live in `src/data/boot.ts`.
+- We found that a `clip-path` transition from `none` never fires
+  `transitionend`, so the terminal starts at `inset(0)` and the exit also has
+  a timer fallback.
+
 ## [0.1.0] - 2026-10-24
 
 - We brought over the handover from the branding session: the brief
