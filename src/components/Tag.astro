@@ -1,3 +1,16 @@
-<li class="rounded-full border border-line-on-dark px-2.5 py-1">
+---
+interface Props {
+  tone?: 'dark' | 'light';
+}
+
+const { tone = 'dark' } = Astro.props;
+---
+
+<li
+  class:list={[
+    'rounded-full border px-2.5 py-1',
+    tone === 'dark' ? 'border-line-on-dark' : 'border-line text-soft',
+  ]}
+>
   <slot />
 </li>

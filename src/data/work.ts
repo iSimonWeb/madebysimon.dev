@@ -15,29 +15,29 @@ export const work: WorkItem[] = [
     name: 'Helpdesk',
     kind: 'PWA',
     description:
-      'The office’s ticketing system, installable like an app. Sign in with your work Microsoft account, and updates reach you live while it’s open and as push notifications when it isn’t.',
-    tags: ['React', 'Node.js', 'Entra ID', 'Web Push', 'Docker'],
+      'The office’s ticketing system, installable like an app. Sign in with your work Microsoft account and updates arrive live, or as push notifications when it’s closed. A ticket can go on hold with a reason the requester can see, and time spent waiting on someone else is counted apart from time spent fixing.',
+    tags: ['React', 'Fluent UI', 'Node.js', 'MongoDB', 'Entra ID', 'Web Push'],
   },
   {
     name: 'Posta Maestro',
     kind: 'Archive',
     description:
-      'Years of certified email (PEC and PEO) used to live in 50 GB Outlook files on shared folders. Posta Maestro turns them into one searchable archive, with each office seeing only its own mail.',
-    tags: ['PST ingest', 'Full-text search', 'Entra ID', 'vSphere'],
+      'Years of ordinary and certified email (PEO and PEC) used to sit in 50 GB Outlook files on shared folders. Posta Maestro turns them into one searchable reading room. It unwraps every PEC envelope, so you search the actual message rather than its “POSTA CERTIFICATA:” wrapper, and each mailbox is open only to the people allowed to read it.',
+    tags: ['React', 'Fastify', 'PostgreSQL full-text', 'PST import', 'Entra ID'],
   },
   {
     name: 'Legal Assistant',
-    kind: 'Assistant',
+    kind: 'PWA + MCP',
     badge: 'In the making',
     description:
-      'Checks a draft against decades of internal circulars, legal opinions and current Italian law, and points to the sources. It also speaks MCP, so an AI assistant can search the same library.',
-    tags: ['MCP server', 'Normattiva', 'PDF to Markdown', 'React'],
+      'Turns decades of circulars, legal opinions and rulings, old scans included, into one searchable library. It checks a draft’s citations against Italian law, down to whether an article was in force on a given date, and shows every check with its source: checks, never verdicts. It also speaks MCP, so an AI assistant can search the same library.',
+    tags: ['React', 'TypeScript', 'SQLite FTS5', 'Tesseract OCR', 'MCP server', 'Normattiva'],
   },
   {
     name: 'dflibrary',
-    kind: 'Library',
+    kind: 'Web app',
     description:
-      'Library management for the office, with notification emails that look right everywhere, including Outlook’s dark mode, which tries very hard to ruin every logo.',
-    tags: ['HTML email', 'nginx', 'Dark mode'],
+      'Runs a Ministry library in Rome. Readers sign in with their Microsoft account, browse the catalogue and request loans, while librarians keep track of every copy, loan and request. New books arrive by Excel import, with details and covers filled in from Google Books and Open Library. And the emails look right even in Outlook’s dark mode.',
+    tags: ['React', 'TypeScript', 'Express', 'PostgreSQL', 'Drizzle ORM', 'Entra ID'],
   },
 ];

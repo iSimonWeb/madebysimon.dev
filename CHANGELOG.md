@@ -6,6 +6,21 @@ All notable changes to madebysimon.dev. The format follows
 
 ## [Unreleased]
 
+## [0.4.1] - 2026-10-24
+
+- The project descriptions now come from each project's own README, not
+  from what we remembered in the branding chat. dflibrary was described as an
+  email template. It is a whole library system (catalogue, loans, copies,
+  Excel import with Google Books and Open Library lookup), and the dark-mode
+  emails are one detail of it.
+- Posta Maestro now tells its real story, unwrapping the PEC envelope.
+  Legal Assistant tells its stance (checks with sources, never verdicts) and
+  mentions the OCR of old scans. Helpdesk explains the hold state.
+- Tech tags match the real stacks. vSphere went, because it describes the
+  hosting rather than the tool. Ultimate Desktop Cleaner gained tags and its
+  best trick: Dustin eats files into the Recycle Bin and can spit them back
+  out.
+
 ## [0.4.0] - 2026-10-24
 
 - The easter egg now plays itself out. When the card scrolls into view, the
