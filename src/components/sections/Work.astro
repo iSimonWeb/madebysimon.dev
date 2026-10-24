@@ -1,6 +1,6 @@
 ---
 import MarkSmall from '../MarkSmall.astro';
-import WorkCard from '../WorkCard.astro';
+import ProjectCard from '../ProjectCard.astro';
 import { work } from '../../data/work';
 ---
 
@@ -18,9 +18,9 @@ import { work } from '../../data/work';
         </p>
       </div>
     </div>
-    <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,440px),1fr))] gap-6">
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,440px),1fr))] gap-6 [&>:last-child:nth-child(odd)]:col-span-full">
       {work.map((item) => (
-        <WorkCard item={item} />
+        <ProjectCard project={item} />
       ))}
     </div>
   </div>

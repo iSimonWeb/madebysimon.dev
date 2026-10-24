@@ -1,0 +1,62 @@
+---
+import Badge from './Badge.astro';
+import Tag from './Tag.astro';
+import type { Project } from '../data/project';
+
+interface Props {
+  project: Project;
+  /** Dark cards sit in the ink band, light ones on paper. */
+  tone?: 'dark' | 'light';
+}
+
+const { project, tone = 'dark' } = Astro.props;
+const dark = tone === 'dark';
+---
+
+<article
+  class:list={['relative flex flex-col gap-4 rounded-card p-7', dark ? 'bg-card-dark' : 'bg-card']}
+>
+  <div class="flex flex-wrap items-center justify-between gap-3">
+    <h3 class="text-[26px] leading-tight font-semibold">
+      {project.href ? (
+        <a
+          href={project.href}
+          class:list={[
+            'underline decoration-accent decoration-2 underline-offset-4 after:absolute after:inset-0 after:rounded-card hover:decoration-4',
+            dark ? 'text-paper' : 'text-ink-deep',
+          ]}
+        >
+          {project.name}
+        </a>
+      ) : (
+        project.name
+      )}
+    </h3>
+    {project.badge ? (
+      <Badge size="sm">{project.badge}</Badge>
+    ) : (
+      <span
+        class:list={[
+          'font-mono text-[13px] font-semibold',
+          dark ? 'text-muted-on-dark' : 'text-muted',
+        ]}
+      >
+        {project.kind}
+      </span>
+    )}
+  </div>
+  <p class:list={['max-w-[68ch] text-[17px] leading-[1.55]', dark ? 'text-on-dark' : 'text-soft']}>
+    {project.description}
+  </p>
+  <ul
+    class:list={[
+      'flex flex-wrap gap-2 font-mono text-[13px] font-semibold',
+      dark && 'text-on-dark',
+    ]}
+    aria-label="Built with"
+  >
+    {project.tags.map((tag) => (
+      <Tag tone={tone}>{tag}</Tag>
+    ))}
+  </ul>
+</article>

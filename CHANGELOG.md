@@ -6,6 +6,29 @@ All notable changes to madebysimon.dev. The format follows
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-10-24
+
+- A new row after At work: The lab, for experiments off the clock, and
+  Upstream, for work merged into other people's projects. Side by side on
+  desktop and stacked on phones, because two separate bands of one card each
+  felt thin. The nav gained a Lab link.
+- The lab opens with vita, a paper-trading system built so it can't fool
+  itself: a hash-chained hypothesis journal, and a sealed risk kernel that
+  keeps live trading locked until out-of-sample evidence earns it.
+- Upstream opens with the UPS dashboard widgets merged into openmediavault
+  (pull request #2234), and the card links to the pull request.
+- About now starts with the same ink rule as the other light sections.
+
+## [0.5.0] - 2026-10-24
+
+- The Intranet Portal joins At work: the building's home page as a bento
+  grid, with the contact book fed by the Helpdesk directory and colour-coded
+  shortcuts to the office services.
+- With five projects, the last card spans the full row instead of leaving a
+  hole, and card text stops at 68 characters so the wide card stays readable.
+- `WorkCard` became `ProjectCard`, with a light tone for cards on paper, and
+  the `Project` type moved to its own module so other sections can use it.
+
 ## [0.4.2] - 2026-10-24
 
 - Pushes to `main` deploy to GitHub Pages through the official Astro action,
