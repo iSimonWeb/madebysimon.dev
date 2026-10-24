@@ -6,6 +6,9 @@ All notable changes to madebysimon.dev. The format follows
 
 ## [Unreleased]
 
+- `npm run dev` and `npm run preview` listen on the LAN too
+  (`server.host`), so the site can be checked from a phone.
+
 ## [0.6.0] - 2026-10-24
 
 - A new row after At work: The lab, for experiments off the clock, and
