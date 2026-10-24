@@ -6,6 +6,20 @@ All notable changes to madebysimon.dev. The format follows
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-10-24
+
+- The easter egg now plays itself out. When the card scrolls into view, the
+  letters of Simone Lazzari hop over and under each other into Simon
+  Realizza, swapping case in mid-air (L to l, r to R). Pressing the name
+  shuffles it back.
+- The line is monospace, so every move is a whole number of `ch`. Astro works
+  out the letter mapping at build time (nearest free matching letter) and
+  fails the build if the two words stop being anagrams. The browser only
+  plays the hops with the Web Animations API.
+- The name is a real button whose accessible name follows the visible word,
+  and the explanatory sentence stays as plain text. With reduced motion the
+  letters swap in place without travelling.
+
 ## [0.3.0] - 2026-10-24
 
 - The nav and hero sit on a perfboard, and the pointer is a soldering iron:

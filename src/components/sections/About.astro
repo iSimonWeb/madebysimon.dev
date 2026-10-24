@@ -1,3 +1,7 @@
+---
+import Anagram from '../Anagram.astro';
+---
+
 <section
   id="about"
   aria-labelledby="about-title"
@@ -13,10 +17,11 @@
       turn out useful end up on this page.
     </p>
     <aside
-      class="on-dark flex flex-col gap-2 rounded-card bg-ink px-7 py-6 text-paper"
+      class="on-dark flex flex-col gap-3 rounded-card bg-ink px-7 py-6 text-paper"
       aria-label="Easter egg"
     >
       <p class="font-mono text-sm font-bold tracking-[0.06em] text-accent uppercase">Easter egg</p>
+      <Anagram from="Simone Lazzari" to="Simon Realizza" />
       <p class="text-lg leading-normal">
         Shuffle the letters of <strong>Simone Lazzari</strong> and you get{' '}
         <strong>Simon Realizza</strong>. In Italian, <em>realizza</em> means “makes it real”.
