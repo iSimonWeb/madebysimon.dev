@@ -6,8 +6,12 @@ All notable changes to madebysimon.dev. The format follows
 
 ## [Unreleased]
 
+## [0.4.2] - 2026-10-24
+
 - Pushes to `main` deploy to GitHub Pages through the official Astro action,
   with a manual **Run workflow** button too.
+- dflibrary appears on the site as Library Manager, a name that says what it
+  is to someone outside the office.
 
 ## [0.4.1] - 2026-10-24
 

@@ -34,7 +34,7 @@ export const work: WorkItem[] = [
     tags: ['React', 'TypeScript', 'SQLite FTS5', 'Tesseract OCR', 'MCP server', 'Normattiva'],
   },
   {
-    name: 'dflibrary',
+    name: 'Library Manager',
     kind: 'Web app',
     description:
       'Runs a Ministry library in Rome. Readers sign in with their Microsoft account, browse the catalogue and request loans, while librarians keep track of every copy, loan and request. New books arrive by Excel import, with details and covers filled in from Google Books and Open Library. And the emails look right even in Outlook’s dark mode.',
