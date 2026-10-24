@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 792.41 792.41" role="img" aria-label="Made by Simon: Si element tile, 92, SIM0N">
+  <!-- Live text: needs Space Grotesk 700 and Red Hat Mono 600 available. Inline it in HTML, or outline the text before using as an <img>. -->
+  <g transform="translate(-143.79 -143.79)">
+    <rect x="143.79" y="143.79" width="792.41" height="792.41" rx="120" fill="#2b2c30"/>
+    <path d="M756.79,402.25l91.52-52.84c15.16-8.75,24.5-24.93,24.5-42.43v-29.79c0-38.66-31.34-70-70-70H277.19c-38.66,0-70,31.34-70,70v257.79c0,17.5,9.34,33.68,24.5,42.43l91.52,52.84c18.67,10.78,18.67,37.72,0,48.5l-91.52,52.84c-15.16,8.75-24.5,24.93-24.5,42.43v28.79c0,38.66,31.34,70,70,70h525.62c38.66,0,70-31.34,70-70v-256.79c0-17.5-9.34-33.68-24.5-42.43l-91.52-52.84c-18.67-10.78-18.67-37.72,0-48.5Z" fill="#c8f03c"/>
+    <text transform="translate(371.72 676.45)" fill="#2b2c30" font-family="'Space Grotesk', sans-serif" font-size="393.93" font-weight="700"><tspan x="0" y="0" letter-spacing="-.02em">S</tspan><tspan x="231.78" y="0">i</tspan></text>
+    <text transform="translate(261.23 345.82)" fill="#2b2c30" font-family="'Red Hat Mono', monospace" font-size="102.81" font-weight="600">92</text>
+    <text transform="translate(396.1 814.91)" fill="#2b2c30" font-family="'Red Hat Mono', monospace" font-size="87.21" font-weight="600" letter-spacing=".07em">SIM0N</text>
+  </g>
+</svg>

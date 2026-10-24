@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.astro/
+.env*
+.DS_Store
+
+# Full-size artwork originals stay local; src/assets holds the web-sized copies.
+assets/

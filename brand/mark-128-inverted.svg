@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-label="Made by Simon">
+  <!-- 128px master. Inner shape scale 1.0000 = optical correction (frame +1px below 128px). -->
+  <rect width="128" height="128" rx="20" fill="#c8f03c"/>
+  <g transform="translate(64 64) scale(1.0000) translate(-64 -64)">
+    <path transform="translate(-321.04 -476)" d="M400.32,519.41l30.74-10.39c1.22-.41,2.04-1.56,2.04-2.84v-4.25c0-5.52-4.48-10-10-10h-76.13c-5.52,0-10,4.48-10,10v36.1c0,1.29.82,2.43,2.04,2.84l30.74,10.39c4.53,1.53,4.53,7.94,0,9.47l-31.46,10.63c-.79.27-1.32,1-1.32,1.84,0,1.81,0,4.76,0,4.76,0,5.58,4.53,10.11,10.11,10.11h76.02c5.52,0,10-4.48,10-10v-35.95c0-1.29-.82-2.43-2.04-2.84l-30.74-10.39c-4.53-1.53-4.53-7.94,0-9.47Z" fill="#2b2c30"/>
+  </g>
+</svg>
