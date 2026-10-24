@@ -6,6 +6,13 @@ All notable changes to madebysimon.dev. The format follows
 
 ## [Unreleased]
 
+## [0.6.3] - 2026-10-24
+
+- Nav links get a solid ink pill on hover and tap, instead of a lime
+  underline. The underline was the same lime as the pads the soldering iron
+  heats, so it vanished right under the cursor, and lime on paper was faint
+  to begin with. The pill also covers the pads behind the label.
+
 ## [0.6.2] - 2026-10-24
 
 - The Ultimate Desktop Cleaner icon gained a soft drop shadow, and the
