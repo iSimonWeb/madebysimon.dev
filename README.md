@@ -45,3 +45,8 @@ Use `<MarkSmall size={n} />` up to 128px and `<MarkFull />` above that. The
 small mark applies the optical correction (a thicker frame below 128px) by
 itself. The full mark is inlined rather than used as an `<img>` so its text
 renders in the site's fonts.
+
+## Deploying
+
+Every push to `main` builds and deploys to GitHub Pages
+(`.github/workflows/deploy.yml`).

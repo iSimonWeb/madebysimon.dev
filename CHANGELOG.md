@@ -6,6 +6,9 @@ All notable changes to madebysimon.dev. The format follows
 
 ## [Unreleased]
 
+- Pushes to `main` deploy to GitHub Pages through the official Astro action,
+  with a manual **Run workflow** button too.
+
 ## [0.4.1] - 2026-10-24
 
 - The project descriptions now come from each project's own README, not
