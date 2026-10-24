@@ -1,0 +1,48 @@
+---
+/**
+ * The notched S without text, for anything up to 128px.
+ * Below 128px the frame gets 1px thicker, which shrinks the inner shape.
+ */
+interface Props {
+  size: number;
+  variant?: 'positive' | 'inverted';
+  /** Accessible name. Without one the mark is decorative. */
+  label?: string;
+  class?: string;
+}
+
+const { size, variant = 'positive', label, class: className } = Astro.props;
+
+// Measured scales from brand/ and the design canvas. Other sizes follow the same
+// curve: 1px of extra frame per side, expressed in the 128-unit viewBox.
+const knownScales: Record<number, number> = {
+  16: 0.8322,
+  32: 0.9154,
+  40: 0.9321,
+  56: 0.9511,
+  64: 0.957,
+};
+const scale = size >= 128 ? 1 : (knownScales[size] ?? 1 - 2.72 / size);
+
+const [frame, field] =
+  variant === 'positive'
+    ? ['var(--color-ink)', 'var(--color-accent)']
+    : ['var(--color-accent)', 'var(--color-ink)'];
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 128 128"
+  class:list={['shrink-0', className]}
+  role={label ? 'img' : undefined}
+  aria-label={label}
+  aria-hidden={label ? undefined : 'true'}
+>
+  <rect width="128" height="128" rx="20" fill={frame}></rect>
+  <path
+    transform={`translate(64 64) scale(${scale}) translate(-64 -64) translate(-321.04 -476)`}
+    d="M400.32,519.41l30.74-10.39c1.22-.41,2.04-1.56,2.04-2.84v-4.25c0-5.52-4.48-10-10-10h-76.13c-5.52,0-10,4.48-10,10v36.1c0,1.29.82,2.43,2.04,2.84l30.74,10.39c4.53,1.53,4.53,7.94,0,9.47l-31.46,10.63c-.79.27-1.32,1-1.32,1.84,0,1.81,0,4.76,0,4.76,0,5.58,4.53,10.11,10.11,10.11h76.02c5.52,0,10-4.48,10-10v-35.95c0-1.29-.82-2.43-2.04-2.84l-30.74-10.39c-4.53-1.53-4.53-7.94,0-9.47Z"
+    fill={field}
+  ></path>
+</svg>

@@ -1,0 +1,86 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/space-grotesk/wght.css';
+@import '@fontsource-variable/red-hat-mono/wght.css';
+
+/*
+ * Brand tokens. Clearing Tailwind's palette means only these colours exist as
+ * utilities (bg-ink, text-muted, border-line-on-dark...).
+ * A dark theme later would redefine these same variables, not add new ones.
+ */
+@theme {
+  --color-*: initial;
+  --color-ink: #2b2c30; /* frame, dark sections, primary text on light */
+  --color-ink-deep: #121316; /* body text */
+  --color-accent: #c8f03c; /* acid lime. Never text on a light background: it fails contrast */
+  --color-paper: #f4f4f1; /* page background */
+  --color-card: #ffffff;
+  --color-card-dark: #36373c; /* cards inside dark sections */
+  --color-soft: #3d3e42; /* long-form text on light */
+  --color-muted: #55565b; /* secondary text on light */
+  --color-line: #8a8b90; /* dashed placeholder outline */
+  --color-on-dark: #e2e3e6; /* long-form text on dark */
+  --color-muted-on-dark: #c4c5ca;
+  --color-line-on-dark: #6b6c72;
+
+  /* Red Hat Mono for its slashed zero: the 0 in madebysim0n. Don't swap it. */
+  --font-sans: 'Space Grotesk Variable', system-ui, sans-serif;
+  --font-mono: 'Red Hat Mono Variable', ui-monospace, monospace;
+
+  --radius-card: 20px;
+  --radius-button: 12px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-paper font-sans text-ink-deep antialiased;
+  }
+
+  /* Anchored sections land with a little air above them. */
+  [id] {
+    scroll-margin-top: 1.5rem;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-ink);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .on-dark :focus-visible {
+    outline-color: var(--color-accent);
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-ink);
+  }
+}
+
+@utility container-page {
+  @apply mx-auto w-full max-w-[1120px] px-4 sm:px-6;
+}
+
+@utility eyebrow {
+  @apply font-mono text-[15px] font-semibold tracking-[0.04em] text-muted;
+}
+
+@utility heading-2 {
+  @apply text-[clamp(2rem,5vw,2.5rem)] leading-[1.1] font-bold tracking-[-0.02em] text-balance;
+}

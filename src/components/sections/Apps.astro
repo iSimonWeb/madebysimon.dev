@@ -1,0 +1,26 @@
+---
+import AppCard from '../AppCard.astro';
+import { apps } from '../../data/apps';
+---
+
+<section
+  id="apps"
+  aria-labelledby="apps-title"
+  class="flex flex-col gap-8 border-t-2 border-ink pt-16 pb-24"
+>
+  <div class="flex flex-wrap items-baseline justify-between gap-3">
+    <h2 id="apps-title" class="heading-2">
+      Apps
+    </h2>
+    <p class="eyebrow">for Windows · on the Microsoft Store</p>
+  </div>
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] gap-6">
+    {apps.map((app) => (
+      <AppCard app={app} />
+    ))}
+    <article class="flex flex-col justify-center gap-2 rounded-card border-2 border-dashed border-line p-7">
+      <h3 class="text-[22px] font-semibold">Next one</h3>
+      <p class="text-[17px] text-muted">Still on the workbench.</p>
+    </article>
+  </div>
+</section>

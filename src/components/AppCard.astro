@@ -1,0 +1,35 @@
+---
+import { Image } from 'astro:assets';
+import Badge from './Badge.astro';
+import type { App } from '../data/apps';
+
+interface Props {
+  app: App;
+}
+
+const { app } = Astro.props;
+---
+
+<article class="relative flex flex-col gap-4 rounded-card bg-card p-7">
+  <Image
+    src={app.icon}
+    alt=""
+    width={112}
+    height={112}
+    densities={[2, 3]}
+    class="-mt-2 -ml-1 size-28"
+  />
+  <h3 class="text-[26px] leading-tight font-semibold">
+    {app.href ? (
+      <a href={app.href} class="no-underline after:absolute after:inset-0 after:rounded-card">
+        {app.name}
+      </a>
+    ) : (
+      app.name
+    )}
+  </h3>
+  <p class="text-[17px] leading-normal text-soft">{app.description}</p>
+  <div class="flex">
+    <Badge>{app.status}</Badge>
+  </div>
+</article>
