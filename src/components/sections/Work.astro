@@ -1,0 +1,27 @@
+---
+import MarkSmall from '../MarkSmall.astro';
+import WorkCard from '../WorkCard.astro';
+import { work } from '../../data/work';
+---
+
+<section id="work" aria-labelledby="work-title" class="on-dark bg-ink text-paper">
+  <div class="container-page flex flex-col gap-10 py-20 sm:py-24">
+    <div class="flex flex-wrap items-center gap-5">
+      <MarkSmall size={56} variant="inverted" />
+      <div class="flex flex-[1_1_320px] flex-col gap-1.5">
+        <h2 id="work-title" class="heading-2">
+          At work
+        </h2>
+        <p class="max-w-2xl text-lg leading-normal text-muted-on-dark">
+          In-house tools for the Italian Ministry of Culture in Rome, where there’s plenty of
+          paperwork and always room for a better tool.
+        </p>
+      </div>
+    </div>
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,440px),1fr))] gap-6">
+      {work.map((item) => (
+        <WorkCard item={item} />
+      ))}
+    </div>
+  </div>
+</section>

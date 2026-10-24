@@ -1,0 +1,108 @@
+---
+/**
+ * Spells `from`, and rearranges its letters into `to` when it scrolls into
+ * view. Pressing it shuffles back and forth. It's a monospace line, so each
+ * letter's move is a whole number of `ch`, worked out here at build time.
+ */
+interface Props {
+  from: string;
+  to: string;
+}
+
+const { from, to } = Astro.props;
+
+// Each letter of `from` takes the nearest free slot in `to` holding the same letter.
+const taken = new Set<number>();
+const letters = [...from].map((char, i) => {
+  let best = -1;
+  [...to].forEach((target, j) => {
+    if (taken.has(j) || target.toLowerCase() !== char.toLowerCase()) return;
+    if (best === -1 || Math.abs(j - i) < Math.abs(best - i)) best = j;
+  });
+  if (best === -1) throw new Error(`"${to}" is not an anagram of "${from}"`);
+  taken.add(best);
+  return { from: char, to: to[best], shift: best - i };
+});
+---
+
+<button
+  type="button"
+  class="anagram -mx-1 cursor-pointer self-start rounded-md px-1 py-1 text-left font-mono text-[clamp(1.25rem,6vw,2rem)] leading-none font-bold whitespace-nowrap text-accent"
+  data-anagram
+  data-from={from}
+  data-to={to}
+>
+  <span class="sr-only" data-label>
+    {from}, shuffle the letters
+  </span>
+  <span aria-hidden="true">
+    {letters.map((letter) => (
+      <span
+        class="inline-block"
+        data-from={letter.from}
+        data-to={letter.to}
+        data-shift={letter.shift}
+      >
+        {letter.from === ' ' ? '\u00a0' : letter.from}
+      </span>
+    ))}
+  </span>
+</button>
+
+<script>
+  const HOP_MS = 700;
+  const STAGGER_MS = 45;
+  const LIFT_EM = 0.55;
+
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-anagram]')) {
+    const letters = [...button.querySelectorAll<HTMLElement>('[data-shift]')];
+    const label = button.querySelector<HTMLElement>('[data-label]')!;
+    const moving = letters.filter((letter) => Number(letter.dataset.shift) !== 0);
+    let shuffled = false;
+
+    const play = () => {
+      shuffled = !shuffled;
+      label.textContent = `${shuffled ? button.dataset.to : button.dataset.from}, shuffle the letters`;
+      const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      moving.forEach((letter, order) => {
+        const shift = Number(letter.dataset.shift);
+        const [start, end] = shuffled ? [0, shift] : [shift, 0];
+        // Letters heading right pass over, letters heading left pass under.
+        const lift = (end > start ? -1 : 1) * LIFT_EM;
+        const delay = still ? 0 : order * STAGGER_MS;
+        letter.animate(
+          [
+            { transform: `translate(${start}ch, 0)` },
+            { transform: `translate(${(start + end) / 2}ch, ${lift}em)` },
+            { transform: `translate(${end}ch, 0)` },
+          ],
+          {
+            duration: still ? 0 : HOP_MS,
+            delay,
+            easing: 'cubic-bezier(0.5, 0, 0.3, 1)',
+            fill: 'forwards',
+          },
+        );
+        // Case swaps (L to l, r to R) happen mid-air.
+        setTimeout(
+          () => {
+            const char = shuffled ? letter.dataset.to! : letter.dataset.from!;
+            letter.textContent = char === ' ' ? '\u00a0' : char;
+          },
+          delay + (still ? 0 : HOP_MS / 2),
+        );
+      });
+    };
+
+    button.addEventListener('click', play);
+
+    new IntersectionObserver(
+      (entries, observer) => {
+        if (!entries[0].isIntersecting) return;
+        observer.disconnect();
+        if (!shuffled) setTimeout(play, 500);
+      },
+      { threshold: 1 },
+    ).observe(button);
+  }
+</script>

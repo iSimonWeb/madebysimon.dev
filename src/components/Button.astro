@@ -1,0 +1,22 @@
+---
+/** A link styled as a keycap: it sits on a hard edge and presses down when clicked. */
+interface Props {
+  href: string;
+  variant?: 'solid' | 'outline';
+}
+
+const { href, variant = 'solid' } = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={[
+    'inline-flex min-h-12 items-center rounded-button border-2 border-ink px-[22px] text-[17px] font-semibold no-underline',
+    'shadow-[0_4px_0_var(--color-ink-deep)] transition-[translate,box-shadow] duration-100 ease-out',
+    'hover:-translate-y-px hover:shadow-[0_5px_0_var(--color-ink-deep)]',
+    'active:translate-y-1 active:shadow-[0_0_0_var(--color-ink-deep)]',
+    variant === 'solid' ? 'bg-ink text-paper' : 'bg-paper text-ink',
+  ]}
+>
+  <slot />
+</a>

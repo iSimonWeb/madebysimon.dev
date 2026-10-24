@@ -1,0 +1,148 @@
+---
+/**
+ * A perfboard behind the nav and hero, down to the element marked
+ * `data-perfboard-end`. Place it first inside a positioned container.
+ * The pads are a CSS dot pattern, so they show without JS. The pointer is a
+ * soldering iron: pads under it get tinned (lime, swollen) and cool back down,
+ * drawn on a canvas that only runs while something is still hot. The iron is
+ * off for reduced motion.
+ */
+---
+
+<div
+  class="perfboard pointer-events-none absolute inset-x-0 top-0 -z-10 h-(--perfboard-height,100svh)"
+  aria-hidden="true"
+>
+  <canvas class="size-full"></canvas>
+</div>
+
+<style>
+  .perfboard {
+    /* Keep in step with PITCH and PAD in the script. */
+    --pitch: 24px;
+    background-image: radial-gradient(
+      circle at center,
+      color-mix(in srgb, var(--color-line) 45%, transparent) 1.4px,
+      transparent 1.9px
+    );
+    background-size: var(--pitch) var(--pitch);
+    mask-image: linear-gradient(to bottom, black 75%, transparent);
+  }
+</style>
+
+<script>
+  const PITCH = 24;
+  const PAD = 1.4;
+  const IRON_RADIUS = 76;
+  const COOLING = 0.975; // heat kept per frame
+  const SAMPLE_STEP = 10; // px between iron samples along a fast stroke
+
+  const board = document.querySelector<HTMLElement>('.perfboard');
+  const host = board?.parentElement;
+  const end = document.querySelector('[data-perfboard-end]');
+  const canvas = board?.querySelector('canvas');
+  const ctx = canvas?.getContext('2d');
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+
+  // The board ends where the hero does, with or without the iron.
+  if (board && host && end) {
+    const fit = () =>
+      board.style.setProperty(
+        '--perfboard-height',
+        `${end.getBoundingClientRect().bottom - host.getBoundingClientRect().top}px`,
+      );
+    fit();
+    new ResizeObserver(fit).observe(host);
+  }
+
+  if (board && host && canvas && ctx && !reduceMotion.matches) {
+    const styles = getComputedStyle(document.documentElement);
+    const accent = styles.getPropertyValue('--color-accent').trim();
+    const ink = styles.getPropertyValue('--color-ink').trim();
+
+    let cols = 0;
+    let rows = 0;
+    let heat = new Float32Array(0);
+    const hot = new Set<number>();
+    let frame = 0;
+    let last: { x: number; y: number } | null = null;
+
+    const resize = () => {
+      const { width, height } = board.getBoundingClientRect();
+      const dpr = Math.min(devicePixelRatio, 2);
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      cols = Math.ceil(width / PITCH);
+      rows = Math.ceil(height / PITCH);
+      heat = new Float32Array(cols * rows);
+      hot.clear();
+    };
+
+    const warm = (x: number, y: number) => {
+      const reach = Math.ceil(IRON_RADIUS / PITCH);
+      const ci = Math.floor(x / PITCH);
+      const cj = Math.floor(y / PITCH);
+      for (let j = Math.max(0, cj - reach); j <= Math.min(rows - 1, cj + reach); j++) {
+        for (let i = Math.max(0, ci - reach); i <= Math.min(cols - 1, ci + reach); i++) {
+          const d = Math.hypot((i + 0.5) * PITCH - x, (j + 0.5) * PITCH - y);
+          if (d >= IRON_RADIUS) continue;
+          const k = j * cols + i;
+          const h = (1 - d / IRON_RADIUS) ** 1.5;
+          if (h > heat[k]) {
+            heat[k] = h;
+            hot.add(k);
+          }
+        }
+      }
+    };
+
+    const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const k of hot) {
+        const h = (heat[k] *= COOLING);
+        if (h < 0.02) {
+          heat[k] = 0;
+          hot.delete(k);
+          continue;
+        }
+        const x = ((k % cols) + 0.5) * PITCH;
+        const y = (Math.floor(k / cols) + 0.5) * PITCH;
+        ctx.beginPath();
+        ctx.arc(x, y, PAD + 3.6 * h, 0, Math.PI * 2);
+        ctx.globalAlpha = Math.min(1, h * 1.6);
+        ctx.fillStyle = accent;
+        ctx.fill();
+        ctx.globalAlpha = h;
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = ink;
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+      frame = hot.size ? requestAnimationFrame(draw) : 0;
+    };
+
+    host.addEventListener('pointermove', (event) => {
+      const rect = board.getBoundingClientRect();
+      const point = { x: event.clientX - rect.left, y: event.clientY - rect.top };
+      if (point.y > rect.height + IRON_RADIUS) {
+        last = null;
+        return;
+      }
+      // Fill the gaps along a fast stroke so the trail stays continuous.
+      const from = last ?? point;
+      const steps = Math.max(
+        1,
+        Math.ceil(Math.hypot(point.x - from.x, point.y - from.y) / SAMPLE_STEP),
+      );
+      for (let s = 1; s <= steps; s++) {
+        warm(from.x + ((point.x - from.x) * s) / steps, from.y + ((point.y - from.y) * s) / steps);
+      }
+      last = point;
+      if (!frame) frame = requestAnimationFrame(draw);
+    });
+    host.addEventListener('pointerleave', () => (last = null));
+
+    new ResizeObserver(resize).observe(board);
+  }
+</script>

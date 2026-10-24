@@ -1,0 +1,31 @@
+---
+import Anagram from '../Anagram.astro';
+---
+
+<section
+  id="about"
+  aria-labelledby="about-title"
+  class="flex flex-wrap gap-x-12 gap-y-8 pt-24 pb-16"
+>
+  <h2 id="about-title" class="heading-2 flex-[1_1_280px]">
+    One maker, many benches
+  </h2>
+  <div class="flex min-w-0 flex-[2_1_420px] flex-col gap-6">
+    <p class="max-w-[40rem] text-[19px] leading-relaxed text-soft">
+      By day I look after computers, servers and web apps at the Ministry of Culture, and build the
+      tools my colleagues are missing. By night I build the things I wish existed. The ones that
+      turn out useful end up on this page.
+    </p>
+    <aside
+      class="on-dark flex flex-col gap-3 rounded-card bg-ink px-7 py-6 text-paper"
+      aria-label="Easter egg"
+    >
+      <p class="font-mono text-sm font-bold tracking-[0.06em] text-accent uppercase">Easter egg</p>
+      <Anagram from="Simone Lazzari" to="Simon Realizza" />
+      <p class="text-lg leading-normal">
+        Shuffle the letters of <strong>Simone Lazzari</strong> and you get{' '}
+        <strong>Simon Realizza</strong>. In Italian, <em>realizza</em> means “makes it real”.
+      </p>
+    </aside>
+  </div>
+</section>

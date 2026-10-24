@@ -1,0 +1,28 @@
+---
+import Button from '../Button.astro';
+import MarkFull from '../MarkFull.astro';
+---
+
+<section
+  data-perfboard-end
+  class="flex flex-wrap items-center gap-x-14 gap-y-10 pt-10 pb-20 sm:pt-16 sm:pb-24"
+>
+  <MarkFull class="w-[min(300px,72vw)] flex-none" />
+  <div class="flex min-w-0 flex-[1_1_420px] flex-col gap-6">
+    <p class="eyebrow uppercase">Software, made in Rome</p>
+    <h1 class="text-[clamp(2.75rem,8vw,4rem)] leading-[1.02] font-bold tracking-[-0.03em] text-balance">
+      Small, solid software.
+    </h1>
+    <p class="max-w-xl text-lg leading-normal text-soft sm:text-xl">
+      Windows apps for everyone, and the web tools I build at my day job at the Italian Ministry of
+      Culture. I’m Simon: developer, sysadmin, and the guy who also 3D prints, solders and makes
+      electronic music.
+    </p>
+    <div class="flex flex-wrap gap-3 pb-1">
+      <Button href="#apps">See the apps</Button>
+      <Button href="#work" variant="outline">
+        See the work
+      </Button>
+    </div>
+  </div>
+</section>
