@@ -6,6 +6,20 @@ All notable changes to madebysimon.dev. The format follows
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-10-24
+
+- The nav and hero sit on a perfboard, and the pointer is a soldering iron:
+  pads under it get tinned (they swell and turn lime with an ink rim), then
+  cool back down over a couple of seconds, leaving a short trail behind the
+  text.
+- The pads themselves are a CSS dot pattern, so the board shows without
+  JavaScript and with reduced motion. Only the hot pads are drawn on a
+  canvas, and its animation loop stops as soon as everything has cooled, so
+  an idle page costs no CPU.
+- The board is a background layer measured down to the end of the hero, which
+  keeps `<header>` and `<main>` as they were. Our first attempt wrapped nav
+  and hero together and pushed the hero out of `<main>`.
+
 ## [0.2.0] - 2026-10-24
 
 - The site starts up in a terminal that builds Simon from source:
