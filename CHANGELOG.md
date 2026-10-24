@@ -6,6 +6,12 @@ All notable changes to madebysimon.dev. The format follows
 
 ## [Unreleased]
 
+## [0.6.2] - 2026-10-24
+
+- The Ultimate Desktop Cleaner icon gained a soft drop shadow, and the
+  Intranet Portal icon is now a full-bleed square, so our rounded tile shapes
+  it the same way as the others. Its baked-in corners were a different radius.
+
 ## [0.6.1] - 2026-10-24
 
 - `npm run dev` and `npm run preview` listen on the LAN too
