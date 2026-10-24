@@ -1,0 +1,39 @@
+---
+import ProjectCard from '../ProjectCard.astro';
+import { lab, upstream } from '../../data/lab';
+
+const columns = [
+  {
+    id: 'lab-title',
+    title: 'The lab',
+    intro: 'Evening experiments. Some grow into apps, the rest teach me something.',
+    projects: lab,
+  },
+  {
+    id: 'upstream-title',
+    title: 'Upstream',
+    intro: 'Features given back to the open-source tools I run every day.',
+    projects: upstream,
+  },
+];
+---
+
+<section
+  id="lab"
+  aria-label="The lab and upstream"
+  class="grid gap-x-6 gap-y-16 pt-24 pb-24 md:grid-cols-2"
+>
+  {columns.map((column) => (
+    <div role="group" aria-labelledby={column.id} class="flex flex-col gap-8">
+      <div class="flex flex-col gap-2">
+        <h2 id={column.id} class="heading-2">
+          {column.title}
+        </h2>
+        <p class="max-w-md text-lg leading-normal text-soft">{column.intro}</p>
+      </div>
+      {column.projects.map((project) => (
+        <ProjectCard project={project} tone="light" />
+      ))}
+    </div>
+  ))}
+</section>
