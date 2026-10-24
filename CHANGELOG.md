@@ -6,6 +6,12 @@ All notable changes to madebysimon.dev. The format follows
 
 ## [Unreleased]
 
+## [0.6.4] - 2026-10-24
+
+- The footer shows the site's version on the right, after the links. It is
+  read from `package.json` at build time, so every bump updates it with
+  nothing else to remember. Only the version string reaches the page.
+
 ## [0.6.3] - 2026-10-24
 
 - Nav links get a solid ink pill on hover and tap, instead of a lime

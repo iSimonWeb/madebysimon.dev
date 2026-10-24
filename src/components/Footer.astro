@@ -1,6 +1,7 @@
 ---
 import MarkSmall from './MarkSmall.astro';
 import { site, socials } from '../data/site';
+import { version } from '../../package.json';
 
 const year = new Date().getFullYear();
 const links = [{ label: 'madebysimon.dev', href: site.url }, ...socials];
@@ -14,7 +15,7 @@ const links = [{ label: 'madebysimon.dev', href: site.url }, ...socials];
         © {year} {site.name}
       </p>
     </div>
-    <ul class="flex flex-wrap gap-x-5 gap-y-2 font-mono font-semibold">
+    <ul class="flex flex-wrap items-baseline gap-x-5 gap-y-2 font-mono font-semibold">
       {links.map((link) => (
         <li>
           <a
@@ -25,6 +26,7 @@ const links = [{ label: 'madebysimon.dev', href: site.url }, ...socials];
           </a>
         </li>
       ))}
+      <li class="text-[13px] text-muted-on-dark">v{version}</li>
     </ul>
   </div>
 </footer>
