@@ -6,6 +6,9 @@ All notable changes to madebysimon.dev. The format follows
 
 ## [Unreleased]
 
+- Dependabot opens a weekly PR for npm and one for the GitHub Actions, with
+  minor and patch updates grouped, so a security patch in the build tooling
+  arrives as a PR.
 - The site builds on Node 26. The October 2026 Node.js security release
   (CVE-2026-111497, a Brotli decoder flaw shown as remote code execution)
   fixed every supported line, and the build already ran on a fixed 22 through
