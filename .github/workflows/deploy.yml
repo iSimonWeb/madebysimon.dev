@@ -20,7 +20,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+      # Pinned to a line rather than left to the action's default, so the site
+      # builds on the same Node the other projects run.
       - uses: withastro/action@v6
+        with:
+          node-version: 26
 
   deploy:
     needs: build

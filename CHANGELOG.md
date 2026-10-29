@@ -6,6 +6,14 @@ All notable changes to madebysimon.dev. The format follows
 
 ## [Unreleased]
 
+- The site builds on Node 26. The October 2026 Node.js security release
+  (CVE-2026-111497, a Brotli decoder flaw shown as remote code execution)
+  fixed every supported line, and the build already ran on a fixed 22 through
+  the Astro action's default. We pinned the action to 26, the active LTS the
+  other projects now use, and `engines` to 26.12.1, its first fixed release.
+  The site ships only static files, so nothing changes for a visitor; the
+  build passes on 26.13.0.
+
 ## [0.6.4] - 2026-10-24
 
 - The footer shows the site's version on the right, after the links. It is
