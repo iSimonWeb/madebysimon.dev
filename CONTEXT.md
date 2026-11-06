@@ -87,6 +87,7 @@ Rules for copy: don't mention user counts at work. "Ministry of Culture" by name
 ## Engineering requirements
 - Responsive down to 360px wide: nav wraps, grids collapse to one column, no horizontal scroll.
 - Semantic HTML, real links/buttons, visible focus styles, `prefers-reduced-motion` respected.
+- Links that leave the site open in a new tab and say so to screen readers: `linkAttrs` (`src/lib/links.ts`) plus `NewTabHint`. Anchors and our own URLs stay in the same tab.
 - Light page only for now (dark sections are part of the design, not a theme toggle). Leave tokens structured so a dark theme could be added later.
 - Lighthouse 95+ across the board; no client JS unless something needs it.
 - Meta: title, description, Open Graph image (1200×630, full positive mark on paper background + wordmark), canonical `https://madebysimon.dev/`.

@@ -1,6 +1,8 @@
 ---
 import MarkSmall from './MarkSmall.astro';
+import NewTabHint from './NewTabHint.astro';
 import { site, socials } from '../data/site';
+import { linkAttrs } from '../lib/links';
 import { version } from '../../package.json';
 
 const year = new Date().getFullYear();
@@ -20,9 +22,11 @@ const links = [{ label: 'madebysimon.dev', href: site.url }, ...socials];
         <li>
           <a
             href={link.href}
+            {...linkAttrs(link.href)}
             class="text-on-dark underline decoration-accent underline-offset-4 hover:decoration-2"
           >
             {link.label}
+            <NewTabHint href={link.href} />
           </a>
         </li>
       ))}

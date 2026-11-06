@@ -1,8 +1,10 @@
 ---
 import { Image } from 'astro:assets';
 import Badge from './Badge.astro';
+import NewTabHint from './NewTabHint.astro';
 import Tag from './Tag.astro';
 import type { App } from '../data/apps';
+import { linkAttrs } from '../lib/links';
 
 interface Props {
   app: App;
@@ -24,11 +26,11 @@ const { app } = Astro.props;
     {app.href ? (
       <a
         href={app.href}
-        target="_blank"
-        rel="noopener"
+        {...linkAttrs(app.href)}
         class="no-underline after:absolute after:inset-0 after:rounded-card"
       >
-        {app.name}<span class="sr-only"> (opens in a new tab)</span>
+        {app.name}
+        <NewTabHint href={app.href} />
       </a>
     ) : (
       app.name

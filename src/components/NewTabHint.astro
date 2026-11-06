@@ -1,0 +1,11 @@
+---
+import { isExternal } from '../lib/links';
+
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+---
+
+{isExternal(href) && <span class="sr-only"> (opens in a new tab)</span>}

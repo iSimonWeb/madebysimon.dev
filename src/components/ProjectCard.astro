@@ -1,8 +1,10 @@
 ---
 import { Image } from 'astro:assets';
 import Badge from './Badge.astro';
+import NewTabHint from './NewTabHint.astro';
 import Tag from './Tag.astro';
 import type { Project } from '../data/project';
+import { linkAttrs } from '../lib/links';
 
 interface Props {
   project: Project;
@@ -38,12 +40,14 @@ const iconClass = ['size-12 shrink-0 rounded-[11px]', icon?.tile && 'bg-paper p-
         {project.href ? (
           <a
             href={project.href}
+            {...linkAttrs(project.href)}
             class:list={[
               'underline decoration-accent decoration-2 underline-offset-4 after:absolute after:inset-0 after:rounded-card hover:decoration-4',
               dark ? 'text-paper' : 'text-ink-deep',
             ]}
           >
             {project.name}
+            <NewTabHint href={project.href} />
           </a>
         ) : (
           project.name

@@ -6,6 +6,14 @@ All notable changes to madebysimon.dev. The format follows
 
 ## [Unreleased]
 
+## [0.7.2] - 2026-11-06
+
+- Every link that leaves the site now opens in a new tab, as the Store link
+  already did: the GitHub link in the footer and the openmediavault pull
+  request card join it. One helper decides by origin, so anchors, the mailto
+  and the footer's own madebysimon.dev link stay put, and a project page of
+  ours added later would too.
+
 ## [0.7.1] - 2026-11-06
 
 - The Store link on an app card opens in a new tab, so the site stays open
