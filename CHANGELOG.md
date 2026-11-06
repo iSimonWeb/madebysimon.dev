@@ -6,6 +6,13 @@ All notable changes to madebysimon.dev. The format follows
 
 ## [Unreleased]
 
+## [0.7.3] - 2026-11-06
+
+- Dependency patches from Dependabot: Astro 7.4.5, Tailwind CSS and its Vite
+  plugin 4.3.4, and playwright-core 1.64.1 for the icon script. The build and
+  `astro check` pass unchanged. `package-lock.json` carries the site's version
+  again: it had stayed at 0.6.4 while `package.json` moved on.
+
 ## [0.7.2] - 2026-11-06
 
 - Every link that leaves the site now opens in a new tab, as the Store link
