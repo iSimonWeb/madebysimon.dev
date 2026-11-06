@@ -67,7 +67,7 @@ Reference: `reference/site-mockup.html` (exported from the design canvas — inl
 
 1. **Nav** — small positive mark (40px) + `madebysim0n` wordmark; links Apps · Work · About · Contact.
 2. **Hero** — full-size positive tile; eyebrow "Software, made in Rome"; H1 "Small, solid software."; intro; buttons "See the apps" / "See the work".
-3. **Apps** (light) — card per app. *Ultimate Desktop Cleaner*: "Meet Ruggy, a cloth-physics rug that hides your desktop icons, and Dustin, his robot vacuum sidekick. Your Windows 11 desktop, finally clean." Badge "Coming to the Microsoft Store". Plus a dashed "Next one — Still on the workbench." placeholder.
+3. **Apps** (light) — card per app. *Ultimate Desktop Cleaner*: "Meet Ruggy, a cloth-physics rug that hides your desktop icons, and Dustin, his robot vacuum sidekick. Your Windows 11 desktop, finally clean." Badge "On the Microsoft Store", and the whole card links to its Store listing. Plus a dashed "Next one — Still on the workbench." placeholder.
 4. **At work** (full-width dark band, inverted mark) — four cards with tech tags:
    - **Helpdesk** (PWA): ticketing system, Microsoft work sign-in, live updates + push. Tags: React, Node.js, Entra ID, Web Push, Docker.
    - **Posta Maestro** (Archive): years of PEC/PEO mail rescued from 50 GB Outlook files into one searchable archive, each office sees only its own mail. Tags: PST ingest, Full-text search, Entra ID, vSphere.

@@ -6,6 +6,11 @@ All notable changes to madebysimon.dev. The format follows
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-11-06
+
+- Ultimate Desktop Cleaner is out: its card now links to the Microsoft Store
+  listing, the whole card is the link, and the badge reads "On the Microsoft
+  Store" instead of "Coming to the Microsoft Store".
 - Dependabot opens a weekly PR for npm and one for the GitHub Actions, with
   minor and patch updates grouped, so a security patch in the build tooling
   arrives as a PR.
