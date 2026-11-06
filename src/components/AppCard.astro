@@ -22,8 +22,13 @@ const { app } = Astro.props;
   />
   <h3 class="text-[26px] leading-tight font-semibold">
     {app.href ? (
-      <a href={app.href} class="no-underline after:absolute after:inset-0 after:rounded-card">
-        {app.name}
+      <a
+        href={app.href}
+        target="_blank"
+        rel="noopener"
+        class="no-underline after:absolute after:inset-0 after:rounded-card"
+      >
+        {app.name}<span class="sr-only"> (opens in a new tab)</span>
       </a>
     ) : (
       app.name

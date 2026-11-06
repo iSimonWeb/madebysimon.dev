@@ -6,6 +6,11 @@ All notable changes to madebysimon.dev. The format follows
 
 ## [Unreleased]
 
+## [0.7.1] - 2026-11-06
+
+- The Store link on an app card opens in a new tab, so the site stays open
+  behind it. Screen readers hear "(opens in a new tab)" after the app's name.
+
 ## [0.7.0] - 2026-11-06
 
 - Ultimate Desktop Cleaner is out: its card now links to the Microsoft Store
