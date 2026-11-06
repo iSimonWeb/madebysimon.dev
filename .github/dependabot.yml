@@ -9,6 +9,11 @@ updates:
     groups:
       npm-minor-and-patch:
         update-types: [minor, patch]
+    ignore:
+      # TypeScript 7 can't check .astro files yet, so `astro check` fails on it
+      # (withastro/astro#17268). Drop this once @astrojs/check accepts 7.
+      - dependency-name: typescript
+        update-types: [version-update:semver-major]
 
   - package-ecosystem: github-actions
     directory: /
